@@ -1,6 +1,6 @@
-FROM ubuntu:14.04.1
+FROM ubuntu:14.04
 MAINTAINER Justin Downing <justin@downing.us>
-ENV REFRESHED_AT 2014-08-19
+ENV REFRESHED_AT 2014-11-05
 
 # update apt and install deps
 RUN apt-get update -qq
@@ -17,3 +17,7 @@ ENV CONFIGURE_OPTS --disable-install-doc
 RUN ruby-build 2.1.2 /usr/local
 RUN gem update --system
 RUN gem install bundler
+
+# cleanup
+RUN apt-get autoremove -y
+RUN rm -rf /tmp/*
